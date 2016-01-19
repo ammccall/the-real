@@ -1,0 +1,55 @@
+{% load staticfiles %}
+
+<html lang = "en">
+<head>
+    
+     <link rel="stylesheet" href="{% static 'warcraft/new_web_users.css' %}"/>
+     <link href='http://fonts.googleapis.com/css?family=Vollkorn:400,700' rel='stylesheet' type='text/css'>
+     
+    <title>Web Online Users</title>
+</head>
+
+<body>
+    
+<h1 class="description">
+  Online Web Users
+</h1>
+
+<!--<p1>
+{% for user in users %}
+    {{user}}<br>
+{% endfor %}
+</p1>-->
+
+<div class="box-table">
+<table>
+  <thead>
+    <tr>
+    <th>Picture</th>
+      <th>Name</th>
+      <th>Ranking</th>
+      <th>Wins</th>
+      <th>Losses</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for user in users%}
+    <tr>
+    <td class="user-photo">
+      <img class="user-tumb" src="{{ MEDIA_URL }}{{ avatar }}{{ request.user.picture }}"></td>
+    <td  style="font-size: 1.5em;" class="styleFont">{{user}}</td>
+    <td style="font-size: 1.5em;" class="styleFont">1</td>
+    <td style="font-size: 1.5em;" class="styleFont">2</td>
+    <td style="font-size: 1.5em;" class="styleFont">3</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+  </table>    
+</div>
+
+<p style= "text-align: center"> Click<a href="/warcraft"> here </a> to return home.</p>
+
+
+</body>
+</html>
+

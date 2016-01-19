@@ -1,0 +1,39 @@
+{% load staticfiles %}
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+
+    <head>
+        <link rel="stylesheet" type="text/css" href="{% static 'warcraft/loggedin_style.css' %}" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>        
+        <title>ChrisCraft Add/Remove Friends</title>
+    </head>
+
+
+<body>
+
+    <section class="container">
+        <div class="login animate fadeIn one">
+            <h2>To add or remove a friend, enter their username below:</h2>
+            
+            <h>{{message}}</h>
+            <form action="/accounts/friends/" method='post'> 
+                   {% csrf_token %}
+                   {{ form.as_p }}
+                    <p><input style="font-size: 1.0em;" type="submit" name="add" value="Add Friend">
+                        <input style="font-size: 1.0em;" type = "submit" name = "delete" value = "Remove Friend">
+                    </p>
+            </form>
+            <br>
+            <br>
+            <a href="/accounts/edit" class ="link">Edit Profile</a>
+            
+            </div>
+    </section>
+</body>
+    
+</html>
+
+{% endblock %}

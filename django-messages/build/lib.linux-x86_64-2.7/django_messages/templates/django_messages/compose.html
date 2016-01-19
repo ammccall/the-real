@@ -1,0 +1,110 @@
+{% load i18n %} 
+ {% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+    
+    <head>
+        <link rel="stylesheet" type="text/css" href="{% static 'warcraft/inbox_style.css' %}" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>        
+        <script type="text/javascript" src="{% static 'warcraft/js/jscript-inbox.js' %}"></script>
+        <link rel="stylesheet" href="{% static 'warcraft/css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'warcraft/css/bootstrap.css' %}">
+        <title>ChrisCraft: New Message</title>
+        <!--<meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content=""> -->
+
+    </head>
+
+<body>
+
+<!--<h1>{% trans "Compose Message"%}</h1>-->
+
+<!--{{ request.user.firstName }} -->
+
+{% block content %}
+<!--
+<form action="" method="post">
+{% csrf_token %} 
+<table>
+<tr><th><label for="id_recipient">Recipient:</label></th><td><input id="id_recipient" name="recipient" type="text" /></td></tr>
+<tr><th><label for="id_subject">Subject:</label></th><td><input id="id_subject" maxlength="120" name="subject" type="text" /></td></tr>
+<tr><th><label for="id_body">Body:</label></th><td><textarea cols="55" id="id_body" name="body" rows="12">
+</textarea></td></tr>
+</table>
+<input type="submit" value="{% trans "Send" %} &raquo;"/>
+</form>
+
+-->
+
+<form action="" method="post">
+{% csrf_token %} 
+
+<div class="tab-pane" id="compose">
+      
+     
+      <div class="back-box">
+    <div class="content-container clearfix">
+    
+     
+            <a href="/messages/inbox" style="display:right;" class ="btn">Inbox  <span class="glyphicon glyphicon-inbox"></span></a>
+            <a href="/messages/outbox" style="display:right;" class ="btn">Sent Mail  <span class="glyphicon glyphicon-send"></span></a>
+            <a href="/messages/trash" style="display:right;" class ="btn">Trash  <span class="glyphicon glyphicon-trash"></span></a>
+           <a style="float: right; margin: 5px; font-size: 1.4em;" href="/accounts/edit">Profile</a>
+            <a style="float: right; margin: 5px; font-size: 1.4em;" href="/warcraft">Home</a>
+           
+           <br>
+           <br>
+    
+        <h1 class="content-title">Compose</h1>
+        <div class="col-md-12">
+                
+            
+            <div class="form-group">
+                <input id="id_recipient" rows="2" name="recipient" type="text" class="form-control" placeholder="To" />
+            </div>
+            
+            <!--
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Cc" />
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Bcc" />
+            </div>
+            -->
+            
+            <div class="form-group">
+                <input id="id_subject" name="subject" type="text" class="form-control" placeholder="Subject" />
+            </div>
+            <textarea id="id_body" class="form-control" name="body" rows="12" placeholder="message"></textarea>
+            
+            <div class="btn-send">
+            
+                <input class="btn-success btn-lg" type="submit" value="Send"/>
+            <!--<button class="btn btn-success btn-lg"><input type="submit"><span class="glyphicon glyphicon-send"></span> Send</input></button>-->
+            
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
+
+    
+</form>
+
+<!--
+<form action="" method="post">
+{% csrf_token %} 
+<table>
+{{ form.as_table }}
+</table>
+<input type="submit" value="{% trans "Send" %} &raquo;"/>
+</form>
+-->
+{% endblock %}
+
+</body>
+</html>

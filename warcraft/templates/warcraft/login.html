@@ -1,0 +1,66 @@
+<!-- login.html -->
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+    
+    <head>
+        <link rel="stylesheet" type="text/css" href="{% static 'warcraft/login_style.css' %}" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>        
+        <title>ChrisCraft Login</title>
+   
+    </head>
+ 
+    <body>
+
+    {%block content%}
+    
+        {%if form.errors %}
+            <p class = 'error'> Sorry invalid username or password</p>
+        {% endif %}
+
+       
+   
+        <section class="container">
+            <div class="login animate fadeIn one">
+            
+            
+            <h1 class="animate fadeIn one">Login to ChrisCraft: Tides of Nitta</h1>
+        
+            <!--    <form action="/accounts/login/" method='post'> {% csrf_token %}
+                    <p><label id="username" for="username">Username: </label>
+                    <input type="text" name ="username" value="" placeholder="Username" id="username"></p>
+                    <p><label id="username" for="password">Password: </label>
+                    <input type="password" name ="password" value="" placeholder="Password" id="password"></p>
+                    <p><input type="submit" name="commit" value="Login"></p>
+                   
+                </form>-->
+                
+                
+            <form class="animate fadeIn one" action="/accounts/login/" method='post'>                
+               {% csrf_token %}
+               {{ form.as_p }}
+                <p><input type="submit" name="commit" value="LOGIN"></p>
+            </form>
+            </div>
+            
+            
+            <div class="login-help">
+                <p>Forgot your password? <a href="/accounts/password_reset">Click here to reset it</a>.</p>
+            </div>
+            
+            <div class="login-help">
+                <p>Don't have an account? <a href="/accounts/register">Click here to Register</a>.</p>
+            </div>
+            
+            <a class="link" href="/warcraft">Home</a>
+     
+            
+        </section>
+
+    {% endblock %}
+    
+
+    </body>
+</html>    
+    

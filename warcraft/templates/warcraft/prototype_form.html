@@ -1,0 +1,19 @@
+{% load staticfiles %}
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="{% static 'warcraft/protostyle.css' %}" />
+        <title>Prototype</title>
+    </head>
+    <body>
+        <h1>NittaCraft2</h1>    
+        <form action="/warcraft/prototype/" method="get">
+            <input type="text" name="q">
+            <input type="submit" value="Display">
+        </form>
+        {% if error %}
+            <p style="color: red;"> {{message}} </p>
+        {%else%}
+            <p style="color: white;"> {{message}} </p>
+        {% endif %}
+    </body>
+</html>

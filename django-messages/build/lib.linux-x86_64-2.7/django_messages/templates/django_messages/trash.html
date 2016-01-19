@@ -1,0 +1,135 @@
+{% load i18n %} 
+{% load url from future %}
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+    
+    <head>
+        <link rel="stylesheet" type="text/css" href="{% static 'warcraft/inbox_style.css' %}" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>        
+        <script type="text/javascript" src="{% static 'warcraft/js/jscript-inbox.js' %}"></script>
+        <link rel="stylesheet" href="{% static 'warcraft/css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'warcraft/css/bootstrap.css' %}">
+        <title>ChrisCraft: Trash</title>
+    </head>
+
+<body>
+
+ <div class="tab-pane active" id="inbox">
+      
+      <div class="back-box" style="display: block;">
+           <div class="content-container clearfix">
+               <div class="col-md-12">
+               
+                <a href="/messages/inbox" style="display:right;" class ="btn">Inbox  <span class="glyphicon glyphicon-inbox"></span></a>
+                <a href="/messages/outbox" style="display:right;" class ="btn">Sent Mail  <span class="glyphicon glyphicon-send"></span></a>
+                <a href="/messages/compose" style="display:right;" class ="btn">Compose  <span class="glyphicon glyphicon-pencil"></span></a>
+                <a style="float: right; margin: 5px; font-size: 1.4em;" href="/accounts/edit">Profile</a>
+                <a style="float: right; margin: 5px; font-size: 1.4em;" href="/warcraft">Home</a>
+                
+                <br />
+                <br />
+                      
+               
+                   <h1 class="content-title">Deleted Messages</h1> 
+                       
+                       
+                        {% block content %} 
+                        
+                        <ul class="mail-list">
+
+                            {% if message_list %} 
+                         
+                            {% for message in message_list %} 
+                                <span style="float: right;"><a href="{% url 'messages_undelete' message.id %}">{% trans "Undelete" %}</a></span>
+                               
+                                <li>
+                                      
+                                    <a href="{{message.get_absolute_url }}">
+                                        <span class="mail-sender">{{ message.recipient }}</span>
+                                        
+                                        <!--<span class="mail-subject">{{ message.subject }}</span>-->
+                                        <p style="text-align:left;">
+                                        {{ message.subject }}
+                                        <span style="float:right;">{{ message.sent_at|date:_("DATETIME_FORMAT") }}</span>
+                                        </p>
+                                        
+                                        
+                                    </a>
+                                </li>
+                           
+                            {% endfor %}
+                                </tbody>
+                            </table>
+                            {% else %}
+                            <p>{% trans "No messages." %}</p>
+                            {% endif %}   
+                            <br />
+                            <br />
+                            <br />
+                            <p>{% trans "Deleted Messages are removed from the trash at unregular intervals, don't rely on this feature for long-time storage." %}</p>
+                            
+                                
+                            </ul>
+                        {% endblock %}
+                         </div>
+           </div>
+       </div>
+      </div>
+
+
+</body>
+</html>
+<!--  <div class="tab-pane" id="trash">
+      
+      <div class="container">
+           <div class="content-container clearfix">
+               <div class="col-md-12">
+                   <h1 class="content-title">Trash</h1>
+                   
+                   <input type="search" placeholder="Search Mail" class="form-control mail-search" />
+                   
+                   <ul class="mail-list">
+                       <li>
+                           <a href="">
+                               <span class="mail-sender">You Tube</span>
+                               <span class="mail-subject">New subscribers!</span>
+                               <span class="mail-message-preview">You have ten more subscriptions click her...</span>
+                           </a>
+                       </li>
+                       <li>
+                           <a href="">
+                               <span class="mail-sender">You Tube</span>
+                               <span class="mail-subject">New subscribers!</span>
+                               <span class="mail-message-preview">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil eveniet ipsum nisi? Eaque odio quae debitis saepe explicabo alias sit tenetur animi...</span>
+                           </a>
+                       </li>
+                       <li>
+                           <a href="">
+                               <span class="mail-sender">You Tube</span>
+                               <span class="mail-subject">New subscribers!</span>
+                               <span class="mail-message-preview">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil eveniet ipsum nisi? Eaque odio quae debitis saepe explicabo alias sit tenetur animi...</span>
+                           </a>
+                       </li>
+                       <li>
+                           <a href="">
+                               <span class="mail-sender">You Tube</span>
+                               <span class="mail-subject">New subscribers!</span>
+                               <span class="mail-message-preview">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil eveniet ipsum nisi? Eaque odio quae debitis saepe explicabo alias sit tenetur animi...</span>
+                           </a>
+                       </li>
+                       <li>
+                           <a href="">
+                               <span class="mail-sender">You Tube</span>
+                               <span class="mail-subject">New subscribers!</span>
+                               <span class="mail-message-preview">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil eveniet ipsum nisi? Eaque odio quae debitis saepe explicabo alias sit tenetur animi...</span>
+                           </a>
+                       </li>
+                   </ul>
+               </div>
+           </div>
+       </div>
+      
+  </div>
+</div>-->

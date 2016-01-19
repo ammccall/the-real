@@ -1,0 +1,19 @@
+{% load staticfiles %}
+<html>
+    <head>
+    </head>
+    <body>
+        {% if username %}
+            <p style="color: black;"> Username is {{username}} </p>
+        {%else%}
+            <p style="color: red;"> No username </p>
+        {% endif %}
+        
+        {% if password %}
+            <p style="color: black;"> password is {{password}} </p>
+        {%else%}
+            <p style="color: red;"> No password </p>
+        {% endif %}
+        
+    </body>
+</html>

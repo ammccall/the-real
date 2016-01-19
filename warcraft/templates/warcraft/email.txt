@@ -1,0 +1,1 @@
+{{ username }} please visit {{link}} to activate your account

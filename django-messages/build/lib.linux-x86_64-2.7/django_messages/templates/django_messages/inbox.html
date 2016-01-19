@@ -1,0 +1,174 @@
+{% load i18n %} 
+{% load url from future %}
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+    
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        
+        
+        <link rel="stylesheet" type="text/css" href="{% static 'warcraft/inbox_style.css' %}" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>        
+        <script type="text/javascript" src="{% static 'warcraft/js/jscript-inbox.js' %}"></script>
+        <link rel="stylesheet" href="{% static 'warcraft/css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'warcraft/css/bootstrap.css' %}">
+        <title>ChrisCraft: {{ request.user.firstName }}'s Inbox</title>
+    </head>
+
+
+<body>
+
+<div id="wrapper">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="#">
+                        Friends List 
+                    </a>
+                </li>
+                <table>
+                {% for name in friendsname %}
+            <tr>
+            	<td><img src="{{ MEDIA_URL }}{{ avatar }}{{ name.2 }}" alt="Avatar" width="50" height="50"></img></td>
+            	<td>{{name.0}}</td>
+            	<td>{{name.1}}</td>
+            
+            </tr>
+                {%endfor%}
+                </table>
+                <li>
+                    <a href="#">{{friendsname}}</a>
+                </li>
+                <li>
+                    <a href="#">Shortcuts</a>
+                </li>
+                <li>
+                    <a href="#">Overview</a>
+                </li>
+                <li>
+                    <a href="#">Events</a>
+                </li>
+                <li>
+                    <a href="#">About</a>
+                </li>
+                <li>
+                    <a href="#">Services</a>
+                </li>
+                <li>
+                    <a href="#">Contact</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+
+ <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Friends List</a>
+
+  <div class="tab-pane active" id="inbox">
+      
+      <div class="back-box box" style="display: block;">
+           <div class="content-container clearfix">
+               <div class="col-md-12">
+               
+               <a href="/messages/compose" style="display:right;" class ="btn">Compose  <span class="glyphicon glyphicon-pencil"></span></a>
+                   <a href="/messages/outbox" style="display:right;" class ="btn">Sent Mail  <span class="glyphicon glyphicon-send"></span></a>
+                   <a href="/messages/trash" style="display:right;" class ="btn">Trash  <span class="glyphicon glyphicon-trash"></span></a>
+                   
+                   <a style="float: right; margin: 5px; font-size: 1.4em;" href="/accounts/edit">Profile</a>
+                   <a style="float: right; margin: 5px; font-size: 1.4em;" href="/warcraft">Home</a>
+                   <br />
+                   <br />
+               
+                   <h1 class="content-title">{{ request.user.firstName }}'s Inbox</h1> 
+                   
+                   
+                   <!--<input type="search" placeholder="Search Mail" class="form-control mail-search" /> -->
+                  
+                     
+                     {% block content %}
+                   <ul class="mail-list">
+                     
+    
+                            
+                            {% if message_list %} 
+                            
+                            {% for message in message_list %} 
+                                <span style="float:right;"><a href="{% url 'messages_delete' message.id %}">{% trans "delete" %}</a></span>
+                            
+                                 <li>
+                                    <a href="{{message.get_absolute_url }}">
+                                        <span class="mail-sender">{{ message.sender }}</span>
+                                        <p style="text-align:left;">
+                                        {{ message.subject }}
+                                        <span style="float:right;">{{ message.sent_at|date:_("DATETIME_FORMAT") }}</span>
+                                        </p>
+                                        <!--<span class="mail-message-preview">You have ten more subscriptions click her...</span>-->
+                                    </a>
+                                 </li>
+                                        {% if message.new %}<strong>{% endif %}
+                                        {% if message.replied %}<em>{% endif %}
+                                        {% if message.replied %}</em>{% endif %}
+                                        {% if message.new %}</strong>{% endif %}</td>
+                                    <!--<td><a href="{% url 'messages_delete' message.id %}">{% trans "delete" %}</a></td>-->
+                                </tr>
+                            {% endfor %}
+                                <!--</tbody> -->
+                            </table>
+                            {% else %}
+                            <p>{% trans "No messages." %}</p>
+                            {% endif %}  
+                        
+                      
+                   </ul>
+                   {% endblock %}
+               </div>
+           </div>
+       </div>
+      </div>
+  <!--</div>-->
+</div>
+                </div>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Menu Toggle Script -->
+    <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+    </script>
+
+
+</body>
+
+
+
+    
+</html>

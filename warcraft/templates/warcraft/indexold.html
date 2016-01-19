@@ -1,0 +1,36 @@
+{% load staticfiles %}
+<html>
+    <!--
+    <audio autoplay>
+        <source src ="{% static 'intro.mp3' %}"> 
+    </audio>
+    -->
+    <head>
+        <link rel="stylesheet" type="text/css" href="{% static 'warcraft/style.css' %}" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>        
+        <title>NittaCraft</title>
+    </head>
+    <body>
+        <h1>
+            NittaCraft
+        </h1>
+        <div style="position: absolute; top: 0; right: 0; width: 100px; text-align:right;">
+            <a href="/accounts/login" id = "Login">Login</a>
+        </div>
+        
+        <div style="position: absolute; top: 20; right: 0; width: 100px; text-align:right;">
+            <a href="/accounts/register" id = "Register">Register</a>
+        </div>
+        
+        <div style="color:#FFFFFF" id="signature"> 
+            <p>#PotatoMafia Productions</p> 
+        </div>
+        <a href="/warcraft/prototype" id ="prototype">Prototype</a>        
+    </body>
+        
+    
+    
+</html>
+
+
+

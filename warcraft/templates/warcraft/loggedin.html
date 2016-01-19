@@ -1,0 +1,73 @@
+{% extends "warcraft/base.html" %}
+{% load staticfiles %}
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+
+    <head>
+        <link rel="stylesheet" type="text/css" href="{% static 'warcraft/loggedin_style.css' %}" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>        
+        <title>ChrisCraft Profile</title>
+    </head>
+
+
+<body>
+<section class="container">
+    <div class="login animate fadeIn one">
+    
+        <a href="/accounts/edit" title="Change Avatar">
+        <img class="img" src = "{{ MEDIA_URL }}{{ avatar }}" alt = "Avatar" width="150" height="150">
+        </a>
+        
+        <h2 style="font-size: 2em" class="h1">
+            {{full_name}}
+        </h2>
+        
+        	<table style="width:100%; font-size: 1.5em"><tr><td>Ranking</td><td>Wins</td><td>Losses</td><td>Rating</td></tr>
+	            <tr><td>{{ranking}}</td><td>{{wins}}</td><td>{{losses}}</td><td>{{rating}}</td></tr>
+	        </table>
+
+        <br>
+        <br>
+        <br>
+        <br>
+  	    <ul class="ul">
+	  		
+	 		<li><a class="link" href="/accounts/edit">Edit Profile</a></li>
+	  		<br>
+	  		<li><a class="link" href="/messages/inbox">Message Inbox</a></li>
+	  		<br>
+	  		<li><a class="link" href="/warcraft">Home</a></li>
+	  		<br>
+		</ul>        
+        
+    <h4>
+        Not {{full_name}}? 
+        Click <a href="/accounts/logout/"> here </a> to logout.
+    </h4>
+
+
+    </div>
+</section>
+  {% if user.is_authenticated %}
+  
+   <!--   <p> Click <a href="/warcraft"> here </a> to return to the homepage.</p>
+      <p> Click <a href="/accounts/edit/"> here </a> to edit profile. </p>
+      <p> Click <a href="/accounts/change_password/"> here </a> to edit password. </p>
+  -->
+
+  
+  {% endif %}
+	
+	<br>
+	<p></p>
+	
+
+</body>
+
+
+</html>
+
+{% endblock %}

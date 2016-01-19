@@ -1,0 +1,111 @@
+/*!
+ * Start Bootstrap - Full Slider HTML Template (http://startbootstrap.com)
+ * Code licensed under the Apache License v2.0.
+ * For details, see http://www.apache.org/licenses/LICENSE-2.0.
+ */
+
+html,
+body {
+    height: 100%;
+}
+
+.carousel,
+.item,
+.active {
+    height: 100%;
+}
+
+.carousel-inner {
+    height: 100%;
+}
+
+/* Background images are set within the HTML using inline CSS, not here */
+
+.fill {
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+.fill3 {
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+}
+
+.fill2 {
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-repeat: repeat;
+}
+
+footer {
+    margin: 50px 0;
+}
+
+.DLButton {
+	background-color:#131413;
+	-moz-border-radius:28px;
+	-webkit-border-radius:28px;
+	border-radius:28px;
+	border:1px solid #559900;
+	display: inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:17px;
+	padding:5px 60px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ffffff;
+	
+	
+}
+.DLButton:hover {
+	background-color:#559900;
+}
+.DLButton:active {
+	position:relative;
+	top:1px;
+}
+
+ul li{
+   position: relative
+}
+ul li form{
+   position: absolute;
+   top: 33px;
+   right: 0px;
+   display: none;
+}
+
+
+.fancyButton {
+	background-color:#131413;
+	-moz-border-radius:28px;
+	-webkit-border-radius:28px;
+	border-radius:28px;
+	border:1px solid #FF8F45;
+	display: inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:17px;
+	padding:5px 60px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ffffff;
+	
+	
+}
+.fancyButton:hover {
+	background-color:#FF8F45;
+}
+.fancyButton:active {
+	position:relative;
+	top:1px;
+}

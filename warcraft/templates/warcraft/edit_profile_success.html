@@ -1,0 +1,58 @@
+{% extends "warcraft/base.html" %}
+{% load staticfiles %}
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html">
+  <title>Edit Profile</title>
+  <meta name="author" content="Jake Rocheleau">
+  <link rel="shortcut icon" href="http://designshack.net/favicon.ico">
+  <link rel="icon" href="http://designshack.net/favicon.ico">
+  <script type="text/javascript" src="{% static 'warcraft/js/jquery-1.10.2.min.js' %}"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <link rel="stylesheet" type="text/css" media="all" href="{% static 'warcraft/edit_success.css' %}" />
+ 
+</head>
+
+
+<body>
+
+    <div id="titlebox" class="animate fadeIn one">
+        <h2 style="color: white">ChrisCraft: Edit User Settings</h2> 
+    </div>
+     
+  
+    <div id="thebox" class="animate fadeIn one" >
+        <div id="contents" class="clearfix">
+
+            <h1 style="color: white">Profile successfully edited!</h1>
+            <br>
+          
+
+           <div  id="userphoto" ><img src="{{ MEDIA_URL }}{{ avatar }}{{ request.user.picture }}" alt="Avatar" width="200" height="200">
+               <h2 style="color: white" ><b>{{ user }}</b></h2>
+            </div> 
+            <p> Name: {{full_name}} </p>
+            <p> Email: {{email}} </p>
+            <p >Notification Frequency: {% if request.user.emailEvery == 0 %}Immediate{% endif %}
+                                        {% if request.user.emailEvery == 10 %}Every 10 Minutes{% endif %}
+                                        {% if request.user.emailEvery == 60 %}Every Hour{% endif %}
+            </p>
+            
+            <br>
+            <p>Click <a href="/accounts/loggedin/">here</a> to go back home.</p>
+            <p>Click <a href="/accounts/edit">here</a> to edit your account.</p>      
+        </div>
+    </div>
+    
+    
+{% endblock %}
+
+    
+    
+</body>
+</html>

@@ -1,0 +1,37 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+<script src="{% static 'warcraft/js/sorttable.js' %}"></script>
+<link rel="stylesheet" href="{% static 'warcraft/ranking.css' %}">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<table style="width:50%" align="center" class="sortable">
+<thead>
+<tr>
+    <th>Ranking&#8661</th>
+    <th>Player</th>
+    <th>Wins</th>
+    <th>Losses</th>
+    <th>Rating</th>
+    
+</tr>
+</thead>
+
+<tbody>
+{% for player in players %}
+<tr>
+    <td><font color="#ffff">{{player.get_ranking}}</font></td1>
+    <td><font color="#ffffff">{{player}}</font></td>
+    <td><font color="#DB0403">{{player.get_wins}}</font></td>
+    <td><font color="#2DD300">{{player.get_losses}}</font></td>
+    <td><font color="#F17C08">{{player.get_rating}}</font></td>
+    
+</tr>
+{% endfor %}
+
+</tbody>
+</table>
+<p style= "text-align: center; color: #ffffff;"><b> Click<a href="/warcraft"> here </a> to return home.</b></p>
+
+</html>

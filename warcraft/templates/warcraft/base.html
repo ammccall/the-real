@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+</head>
+
+<body>
+	<div id="page">
+
+    <div id="content">
+    
+	{% if messages %}
+	<ul class="messages">
+	    {% for message in messages %}
+	    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+	    {% endfor %}
+	</ul>
+	{% endif %}
+        
+        {% block content %}This is the content area{% endblock %}
+	
+	<div class="clearfix"></div>
+    </div>
+	
+	</div>
+		
+</body>
+</html>
