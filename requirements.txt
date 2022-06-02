@@ -33,7 +33,7 @@ django-treebeard==3.0
 django-user-accounts==1.2.0
 django-widget-tweaks==1.4.1
 djangocms-admin-style==0.2.8
-html5lib==0.999
+html5lib==0.99999999
 httplib2==0.8
 iotop==0.6
 jsonpatch==1.3
